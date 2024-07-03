@@ -46,18 +46,6 @@ int main()
     Shop shops[256];
     int counter = 0;
 
-    for (int i = 0; i < (sizeof(shops) / sizeof(shops[0])), i++;) {
-        if (shops[i].isEmpty()) {
-            if (counter + i > 255) {
-                counter = 0;
-            }
-            else {
-                counter = i;
-            }
-            break;
-        }
-    }
-
     string name = "";
     int num = 0;
     double hallS = 0;
@@ -115,7 +103,13 @@ int main()
             //Create shop and list it
             Shop shop = Shop(name, num, hallS, storageS);
             shops[counter] = shop;
-            counter++;
+            if (counter+1 > 255) {
+                cout << "Limit reached";
+                break;
+            }
+            else {
+                counter++;
+            }
         }
 
     } while (!end);
@@ -129,25 +123,21 @@ int main()
 
     //Save data to file in ascending
     if (input == "0") {
-        if (shops[counter + 1].isEmpty() && counter <= 1) {
-            file << "Shop name: " << shops[0].Name << endl << "Shop number: " << shops[0].Number << endl << "Shop hall storage: " << shops[0].HallS << endl << "Shop storage storage: " << shops[0].StorageS << endl;
-            file.close();
-        }
-        else {
-            for (int i = 0; i < counter, i++;) {
-                file << "Shop name: " << shops[i].Name << endl << "Shop number: " << shops[i].Number << endl << "Shop hall storage: " << shops[i].HallS << endl << "Shop storage storage: " << shops[i].StorageS << endl;
-            }
-            file.close();
+        int j = 0;
+        for (int i = 255; i > -1, i--;) { 
+            if (j + 1 > 255) break;
+            if (!shops[j].isEmpty()) { file << "Shop name: " << shops[j].Name << endl << "Shop number: " << shops[j].Number << endl << "Shop hall storage: " << shops[j].HallS << endl << "Shop storage storage: " << shops[j].StorageS << endl; 
+            j++; }
+            else break;
         }
     }
     //Save data to file in descending
     if (input == "1") {
-        for (int i = counter; i > -1, i++;) {
-            file << "Shop name: " << shops[i].Name << endl << "Shop number: " << shops[i].Number << endl << "Shop hall storage: " << shops[i].HallS << endl << "Shop storage storage: " << shops[i].StorageS << endl;
+        for (int i = 255; i > -1, i--;) {
+            if (!shops[i].isEmpty()) file << "Shop name: " << shops[i].Name << endl << "Shop number: " << shops[i].Number << endl << "Shop hall storage: " << shops[i].HallS << endl << "Shop storage storage: " << shops[i].StorageS << endl;
         }
-        file.close();
     }
+    file.close();
     
-
     return 0;
 }

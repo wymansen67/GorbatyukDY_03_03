@@ -1,4 +1,12 @@
+Shop name: Shop2
+Shop number: 3
+Shop hall storage: 3
+Shop storage storage: 3
+Shop name: Shop1
+Shop number: 2
+Shop hall storage: 2
+Shop storage storage: 2
 Shop name: Shop
-Shop number: 12
-Shop hall storage: 131
-Shop storage storage: 4214
+Shop number: 1
+Shop hall storage: 1
+Shop storage storage: 1
