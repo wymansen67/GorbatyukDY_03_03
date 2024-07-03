@@ -67,6 +67,7 @@ int main()
     //input method
     bool end = false;
     do {
+        //Input shop number
         cout << "Input shop name " << counter + 1 << " ( input 0 to exit ): ";
         cin >> input;
         if (input == "0") {
@@ -77,7 +78,7 @@ int main()
             name = input;
             input == "";
         }
-
+        //Input shop number
         cout << "Input shop number " << counter + 1 <<  " (input 0 to exit) : ";
         cin >> input;
         if (input == "0") {
@@ -88,7 +89,7 @@ int main()
             num = stoi(input);
             input == "";
         }
-
+        //input sho hall space
         cout << "Input shop hall space " << counter + 1 << " ( input 0 to exit ): ";
         cin >> input;
         if (input == "0") {
@@ -99,7 +100,7 @@ int main()
             hallS = stod(input);
             input == "";
         }
-
+        //input shop storage space
         cout << "Input shop storage space " << counter + 1 << " ( input 0 to exit ): ";
         cin >> input;
         if (input == "0") {
@@ -119,12 +120,14 @@ int main()
 
     } while (!end);
 
+    //File stream write
     ofstream file = ofstream("Shops.txt");
     do {
         cout << "Input sort type. 0 for ascending or 1 for descending:  ";
         cin >> input;
     } while (input != "0" && input != "1");
 
+    //Save data to file in ascending
     if (input == "0") {
         if (shops[counter + 1].isEmpty() && counter <= 1) {
             file << "Shop name: " << shops[0].Name << endl << "Shop number: " << shops[0].Number << endl << "Shop hall storage: " << shops[0].HallS << endl << "Shop storage storage: " << shops[0].StorageS << endl;
@@ -137,7 +140,7 @@ int main()
             file.close();
         }
     }
-    
+    //Save data to file in descending
     if (input == "1") {
         for (int i = counter; i > -1, i++;) {
             file << "Shop name: " << shops[i].Name << endl << "Shop number: " << shops[i].Number << endl << "Shop hall storage: " << shops[i].HallS << endl << "Shop storage storage: " << shops[i].StorageS << endl;
