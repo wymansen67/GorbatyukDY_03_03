@@ -1,0 +1,4 @@
+Shop name: Shop
+Shop number: 12
+Shop hall storage: 131
+Shop storage storage: 4214
